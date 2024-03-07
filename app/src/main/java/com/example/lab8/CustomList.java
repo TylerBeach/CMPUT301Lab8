@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class CustomList extends ArrayAdapter<City> {
@@ -45,12 +46,30 @@ public class CustomList extends ArrayAdapter<City> {
 
     }
 
+
+    /**
+     * this gets size of the list
+     * @return
+     */
     public int getCount(){
         return cities.size();
     }
-
+    /**
+     * this adds a city object to the list
+     *for the first phase it will be
+     empty * @param city
+     */
     public void addCity(City city){
-
+        cities.add(city);
     }
 
+    private static CustomList list;
+    /**
+     * create a mocklist for my citylist
+     * @return
+     */
+    public static CustomList MockCityList(){
+        list = new CustomList(null,new ArrayList<>());
+        return list;
+    }
 }
